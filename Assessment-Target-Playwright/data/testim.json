@@ -1,0 +1,9 @@
+{
+    "url" : {
+        "home" : "https://www.testim.io/test-automation-tool/",
+        "signIn" : "https://app.testim.io/#/signin"
+    },
+    "title" : "Testim",
+    "headers":["Products","Solutions","Developers","Company","Resources","Pricing"]
+    
+}

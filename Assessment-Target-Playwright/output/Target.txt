@@ -1,0 +1,7 @@
+Target
+Actual Price : $350.00
+Offer price : $175.00
+Displayed Discount Price: 175
+Displayed Discount Percentage: 50
+Calculated Discount Price : 175
+Calculated Discount Percentage : 50

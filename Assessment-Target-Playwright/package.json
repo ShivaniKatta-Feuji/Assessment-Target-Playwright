@@ -3,13 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "target": "npx playwright test Target.spec.js --project=firefox",
+    "booking": "npx playwright test Booking.spec.js --project=chromium",
+    "testim": "npx playwright test Testim.spec.js --project=chromium",
+    "youtube": "npx playwright test Youtube.spec.js --project=chromium",
+    "launchAll":"npm run target & npm run booking & npm run testim & npm run youtube",
+    "allure-generate": "allure generate allure-results --clean",
+    "allure-open": "allure open allure-report",
+    "allure-serve": "allure generate allure-results --clean && allure open allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.10.2",
+    "allure-playwright": "^3.0.7"
   },
   "dependencies": {
     "dotenv": "^16.4.7"

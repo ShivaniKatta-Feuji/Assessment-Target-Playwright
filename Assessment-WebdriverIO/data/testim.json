@@ -1,0 +1,8 @@
+{
+    "url" : {
+        "home" : "https://www.testim.io/test-automation-tool/",
+        "signIn" : "https://app.testim.io/#/signin"
+    },
+    "title" : "Product - AI-driven E2E automation with code-like flexibility for your most resilient tests",
+    "headers" : ["Products","Solutions","Developers","Company","Resources","Pricing"]
+}

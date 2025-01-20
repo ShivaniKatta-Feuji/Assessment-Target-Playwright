@@ -5,9 +5,8 @@
     "input" : {
         "watches" : "watches"
     },
-    "watch" : {
-        "title" : "Disney Citizen Eco-Drive Watch",
-        "offerPrice" : "$337.50",
-        "discount" : "112.50"
+    "message" : {
+        "discountError" : "Discount miscalculation detected"
     }
+   
 }

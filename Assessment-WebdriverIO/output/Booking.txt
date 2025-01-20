@@ -1,0 +1,10 @@
+Booking.com | Official site | The best hotels, flights, car rentals & accommodationsCheckin date : 20 January 2025
+Checkout date : 25 January 2025
+Expected count : 970
+Search results : Paris: 970 properties found
+Expected count : 76
+Search results : Paris: 76 properties found
+Hotel name from search results :Grand Hôtel Amelot
+Selected Hotel name :Grand Hôtel Amelot
+Checkin date : 20 January 2025
+Checkout date : 25 January 2025

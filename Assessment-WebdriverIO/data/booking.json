@@ -1,0 +1,12 @@
+{
+    "title" : "Booking.com",
+    "url" : {
+        "home" : "https://www.booking.com/"
+    },
+    "search" : {
+        "location" : "Paris",
+        "numberOfDays" : 5,
+        "childAge" : "3"
+    }
+
+}

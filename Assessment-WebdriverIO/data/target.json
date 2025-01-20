@@ -1,0 +1,16 @@
+{
+    "url" : {
+        "home" : "https://www.target.com/"
+    },
+    "input" : {
+        "watches" : "watches"
+    },
+    "message" : {
+        "discountError" : "Discount miscalculation detected"
+    },
+    "css" : {
+        "currentPriceColour" : "",
+        "salePriceColour" : "rgb(204, 0, 0)"
+    }
+   
+}

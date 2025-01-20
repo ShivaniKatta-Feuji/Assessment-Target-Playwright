@@ -1,0 +1,12 @@
+{
+    "title" : "Booking.com | Official site | The best hotels, flights, car rentals & accommodations",
+    "url" : {
+        "home" : "https://www.booking.com/"
+    },
+    "search" : {
+        "location" : "Paris",
+        "numberOfDays" : 5,
+        "age":"3"
+    }
+
+}
