@@ -20,9 +20,7 @@ exports.config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: [
-        '.features/*.feature'
-    ],
+    specs: ["./features/**/*.feature"],
     suites: {
         UI: [
           './features/target.feature',
@@ -58,7 +56,8 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome',
+        // browserName: 'chrome',
+        browserName: 'firefox',
         maxInstances: 3,
     }],
 

@@ -5,7 +5,7 @@ const helper = require('../../utils/helper')
 require('dotenv').config();
 const fs = require('fs')
 const outputDir='output/Booking.txt'
-let searchResults,selectedHotelName,hotelName;
+let searchResults,selectedHotelName,hotelName,filterCount;
 
 class BookingPage {
     get closeButton1(){
@@ -26,9 +26,7 @@ class BookingPage {
     get selectLocation(){
         return $('(//div[@data-testid="autocomplete-results-options"]//div[contains(text(),"Paris")])[1]');
     }
-    get searchButton(){
-        return $('//span[contains(text(),"Search")]//parent::button');
-    }
+
     get selectDate(){
         return $('//button[@data-testid="searchbox-dates-container"]');
     }
@@ -94,7 +92,7 @@ class BookingPage {
         await browser.url(process.env.bookingURL);
     }
     async handlePopups(){
-        helper.assertWithAllure("Handlind popups",async()=>{
+        await helper.assertWithAllure("Handlind popups",async()=>{
             await this.closeButton1.waitForDisplayed();
             const isDisplayed=await this.closeButton1.isDisplayed();
             if(isDisplayed){
@@ -146,7 +144,7 @@ class BookingPage {
         await this.searchButton.click();
     }
     async verifySearchResults(){
-        helper.assertWithAllure("Validating the visibility of the header and asserting to contain Location name",async()=>{
+        await helper.assertWithAllure("Validating the visibility of the header and asserting to contain Location name",async()=>{
             await this.searchResultsHeader.isDisplayed();
             searchResults=await this.searchResultsHeader.getText();
             expect(searchResults).to.contain(data.search.location);
@@ -157,13 +155,13 @@ class BookingPage {
     async selectFilter(filter){
         await helper.assertWithAllure("Applying any filter by clicking the checkbox",async()=>{
             await this.filterSideBar.isDisplayed();
+            await browser.pause(parseInt(process.env.smallTimeout));
             await filter.click();
         });
     }
     async verifyResultCount(expectedCount){
         await helper.assertWithAllure("Extracting the expected count",async()=>{
-            await browser.pause(parseInt(process.env.smallTimeout));
-            const filterCount=await expectedCount.getText();
+            filterCount=await expectedCount.getText();
             helper.logToFile(outputDir,`Expected count : ${filterCount}`);
         });
         await helper.assertWithAllure("Extracting the search results from the header",async()=>{
@@ -201,6 +199,5 @@ class BookingPage {
             expect(hotelName).to.be.equal(selectedHotelName);
         });
     }
-
 }
 module.exports = new BookingPage();

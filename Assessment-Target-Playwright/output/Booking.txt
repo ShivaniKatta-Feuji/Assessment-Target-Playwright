@@ -1,6 +1,4 @@
 Booking 
-Total search results on this location : Paris: 1,080 properties found
-Expected count : 973
-Search results : Paris: 973 properties found
-Hotel name from search results :YOOMA Urban Lodge Tour Eiffel
-Selected Hotel name :YOOMA Urban Lodge Tour Eiffel
+Total search results on this location : Paris: 912 properties found
+Expected count : 150
+Search results : Paris: 8 properties found

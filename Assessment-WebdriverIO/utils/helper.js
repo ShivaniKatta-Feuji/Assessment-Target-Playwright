@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { allure } = require('allure-playwright')
+const allure = require('@wdio/allure-reporter')
 
 function calculateDiscount(actualPrice,OfferPrice){
     const price= actualPrice-OfferPrice;
@@ -41,7 +41,7 @@ function verifyListItems(locator,count){
 async function assertWithAllure(stepName,fn){
     await allure.step(stepName,async()=>{
         await fn();
-    })
+    });
 }
 function logToFile(outputDir,message){
     fs.appendFileSync(outputDir,message+"\n");

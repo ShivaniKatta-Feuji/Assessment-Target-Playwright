@@ -84,7 +84,6 @@ exports.BookingPage=class Booking{
     async applyFilter(filter,expectedCount){
         await helper.assertWithAllure("Apply filter and extract the count",async()=>{
             await filter.click();
-            await this.page.waitForTimeout(parseInt(process.env.smallTimeout));
             filterCount=await expectedCount.textContent();
             helper.logToFile(outputDir,`Expected count : ${filterCount}`);
         });
@@ -112,7 +111,7 @@ exports.BookingPage=class Booking{
         });
         await helper.assertWithAllure("Applying different filters and verifying",async()=>{
             await this.applyFilter(this.filter1,this.filter1ExpectedCount);
-            // await this.applyFilter(this.filter2,this.filter2ExpectedCount);
+            await this.applyFilter(this.filter2,this.filter2ExpectedCount);
         });
     }
     async selectAnAccommodation(){

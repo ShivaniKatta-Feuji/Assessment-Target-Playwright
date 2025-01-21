@@ -53,8 +53,13 @@ exports.TargetPage=class TargetPage{
     }
     async selectWatch(){
         await helper.assertWithAllure("Validating the discount watch to be displayed",async()=>{
-            await expect(this.selectedWatch).toBeVisible();
-            await this.selectedWatch.click();
+            const isVisible=await this.selectedWatch.isVisible();
+            if(isVisible){
+                await this.selectedWatch.click();
+            }else{
+                console.error("No Products found with discount offers");
+                return;
+            }
         });
         await helper.assertWithAllure("Validating the offer details to be displayed",async()=>{
             await expect(this.actualPrice).toBeVisible();

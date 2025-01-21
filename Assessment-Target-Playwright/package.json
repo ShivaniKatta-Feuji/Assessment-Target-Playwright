@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "target": "npx playwright test Target.spec.js --project=firefox",
-    "booking": "npx playwright test Booking.spec.js --project=chromium",
-    "testim": "npx playwright test Testim.spec.js --project=chromium",
-    "youtube": "npx playwright test Youtube.spec.js --project=chromium",
-    "launchAll":"npm run target & npm run booking & npm run testim & npm run youtube",
+    "booking": "npx playwright test Booking.spec.js",
+    "testim": "npx playwright test Testim.spec.js",
+    "youtube": "npx playwright test Youtube.spec.js",
+    "launchAll":"npm run testim & npm run youtube & npm run target & npm run booking",
     "allure-generate": "allure generate allure-results --clean",
     "allure-open": "allure open allure-report",
     "allure-serve": "allure generate allure-results --clean && allure open allure-report"

@@ -1,6 +1,1 @@
-Original Price : 65
-Offer Price : 49
-Displayed Discount Price : 65
-Displayed Discount Percentage : 65
-Calculated Discount Price : 65
-Calculated Discount Percentage : 65
+Target

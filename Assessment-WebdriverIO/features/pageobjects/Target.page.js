@@ -4,7 +4,7 @@ const { expect } = require("chai");
 const fs = require('fs');
 const helper = require("../../utils/helper");
 const outputDir='output/Target.txt'
-let calculatedPrice, calculatedPercentage, displayedPrice, displayedPercentage;
+let actualValue,offerValue,calculatedPrice, calculatedPercentage, displayedPrice, displayedPercentage;
 
 require("dotenv").config();
 
@@ -59,22 +59,22 @@ class TargetPage {
         await this.signIn.isEnabled();
     }
     async performSearch() {
-        helper.assertWithAllure("Entering watches in the search bar and clicking search",async()=>{
-        await this.searchBar.isEnabled();
-        await this.searchBar.setValue(data.input.watches);
-        await this.searchButton.click();
-      });
+        await helper.assertWithAllure("Entering watches in the search bar and clicking search",async()=>{
+            await this.searchBar.isEnabled();
+            await this.searchBar.setValue(data.input.watches);
+            await this.searchButton.click();
+        });
     }
     async verifySearchForWatches() {
-        helper.assertWithAllure("Asserting the search resulted products to contain watches",async()=>{
-            fs.writeFileSync("Target");
+        await helper.assertWithAllure("Asserting the search resulted products to contain watches",async()=>{
+            fs.writeFileSync(outputDir,"Target");
             const results = await this.searchResults.getText();
             expect(results).to.contain(data.input.watches);
             await this.wristWatches.isDisplayed();
         });
     }
     async selectAnyWatch() {
-        helper.assertWithAllure("Checking for the visibility of any discount products",async()=>{
+        await helper.assertWithAllure("Checking for the visibility of any discount products",async()=>{
             const isDisplayed = await this.selectedWatch.isDisplayed();
             if (isDisplayed) {
               const watchTitle = await this.selectedWatch.getAttribute("aria-label");
@@ -88,20 +88,20 @@ class TargetPage {
         });
     }
     async checkForDetails() {
-        helper.assertWithAllure("Validating the visibility of the discount details",async()=>{
+        await helper.assertWithAllure("Validating the visibility of the discount details",async()=>{
             await this.actualPrice.isDisplayed();
             await this.offerPrice.isDisplayed();
             await this.discount.isDisplayed();
         });
     }
     async calculateDiscount() {
-        helper.assertWithAllure("Retrieving the Original price,Discount price and discount rate",async()=>{
+        await helper.assertWithAllure("Retrieving the Original price,Discount price and discount rate",async()=>{
             const actual = await this.actualPrice.getText();
-            const actualValue=(helper.getValueFromString(actual)).price;
+            actualValue=(helper.getValueFromString(actual)).price;
             helper.logToFile(outputDir,`Original Price : ${actualValue}`);
             
             const current = await this.offerPrice.getText();
-            const offerValue=(helper.getValueFromString(current)).price;
+            offerValue=(helper.getValueFromString(current)).price;
             helper.logToFile(outputDir,`Offer Price : ${offerValue}`);
 
             const discount = await this.discount.getText();
@@ -111,7 +111,7 @@ class TargetPage {
             helper.logToFile(outputDir,`Displayed Discount Price : ${actualValue}`);
             helper.logToFile(outputDir,`Displayed Discount Percentage : ${actualValue}`);
         });
-        helper.assertWithAllure("Calculating the discount price and percentage",async()=>{
+        await helper.assertWithAllure("Calculating the discount price and percentage",async()=>{
             const calculatedDiscount = helper.calculateDiscount(actualValue, offerValue);
             calculatedPrice = calculatedDiscount.price;
             calculatedPercentage = calculatedDiscount.percentage;
@@ -121,7 +121,7 @@ class TargetPage {
       
     }
     async validateDiscount() {
-        helper.assertWithAllure("Asserting the displayed discount price and percentage with calculated price and percentage",async()=>{
+        await helper.assertWithAllure("Asserting the displayed discount price and percentage with calculated price and percentage",async()=>{
             try {
               expect(calculatedPrice).to.be.closeTo(displayedPrice, 0.05);
               expect(calculatedPercentage).to.be.closeTo(displayedPercentage, 0.5);
